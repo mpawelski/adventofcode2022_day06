@@ -1,6 +1,6 @@
-use std::{collections::HashSet, io::Read};
+use std::collections::HashSet;
 
-use color_eyre::eyre::{eyre, Error, Result};
+use color_eyre::eyre::{eyre, Result};
 
 pub fn run_part1_v1(input: &str) -> Result<usize> {
     let result = input
@@ -139,8 +139,7 @@ pub fn run_part2_v5_array_counters(input: &str) -> Result<usize> {
 
     let mut windows_with_index = input.windows(window_size).enumerate();
 
-    // warning of unused code, but when I comment it out I get an error. A rustc bug?
-    let Some((_, first_window)) = windows_with_index.next() else { return panic!("wrong input") };
+    let Some((_, first_window)) = windows_with_index.next() else { panic!("wrong input") };
 
     for &c in first_window {
         let char_counter = &mut char_counters['z' as usize - c as usize];
@@ -215,7 +214,7 @@ pub fn run_part2_v7_bit_tricks_xor(input: &str) -> Result<usize> {
 
     let mut set = 0u32;
 
-    let Some((_, first_window)) = windows_with_index.next() else { return panic!("wrong input") };
+    let Some((_, first_window)) = windows_with_index.next() else { panic!("wrong input") };
 
     //set bits for first window
     for &c in first_window {
